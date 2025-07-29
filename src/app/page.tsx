@@ -9,37 +9,6 @@ const NAV_LINKS = [
   { label: "CLIENTS", href: "#clients" },
 ];
 
-const SERVICES = [
-  {
-    title: "Political Campaign",
-    desc: "Launch vibrant campaigns and connect with your audience.",
-    color: "from-purple-800 to-purple-600",
-    icon: "/file.svg",
-    btn: "Go to See",
-  },
-  {
-    title: "Social Media Marketing",
-    desc: "Boost your brand's presence across all channels.",
-    color: "from-cyan-800 to-cyan-600",
-    icon: "/globe.svg",
-    btn: "Go to List",
-  },
-  {
-    title: "Graphics Designing",
-    desc: "Create eye-catching, memorable content for your brand.",
-    color: "from-fuchsia-800 to-fuchsia-600",
-    icon: "/window.svg",
-    btn: "Go to See",
-  },
-  {
-    title: "Content Writing",
-    desc: "Engage and convert with creative content.",
-    color: "from-sky-800 to-sky-600",
-    icon: "/vercel.svg",
-    btn: "Go to List",
-  },
-];
-
 const TESTIMONIALS = [
   { name: "Rakesh Mehta", role: "Political Strategist", img: "/file.svg" },
   { name: "Sneha Gupta", role: "Content Visionary", img: "/globe.svg" },
@@ -48,6 +17,7 @@ const TESTIMONIALS = [
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -90,12 +60,26 @@ export default function Home() {
 
       {/* Header/Navbar */}
       <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between bg-[#101024] shadow-lg border-b border-[#23234a]">
+        {/* Logo and Company Name (left) */}
         <div className="flex items-center gap-3">
           <Image src="/images/logo.png" alt="Pingaksh Logo" width={40} height={40} className="object-contain" />
           <span className="font-bold text-xl tracking-widest">PINGAKSH</span>
           <span className="text-xs font-semibold ml-2 opacity-60">CREATIVE STUDIO</span>
         </div>
-        <nav className="flex-1 flex justify-center">
+        {/* Hamburger Menu (center, mobile only) */}
+        <div className="flex-1 flex justify-center md:hidden">
+          <button
+            className="flex flex-col gap-1 p-2"
+            aria-label="Open navigation menu"
+            onClick={() => setIsMobileMenuOpen(true)}
+          >
+            <div className="w-7 h-1 bg-white rounded transition-all"></div>
+            <div className="w-7 h-1 bg-white rounded transition-all"></div>
+            <div className="w-7 h-1 bg-white rounded transition-all"></div>
+          </button>
+        </div>
+        {/* Navlinks (center, desktop only) */}
+        <nav className="hidden md:flex flex-1 justify-center">
           <ul className="flex gap-8 text-sm font-semibold">
             {NAV_LINKS.map((link) => (
               <li key={link.label}>
@@ -109,10 +93,47 @@ export default function Home() {
             ))}
           </ul>
         </nav>
+        {/* CONTACT US button (right) */}
         <button className="bg-cyan-500 hover:bg-cyan-400 text-white px-5 py-2 rounded-lg font-semibold transition-colors shadow-md">
           CONTACT US
         </button>
       </header>
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-50 bg-black/90 flex flex-col">
+          <div className="flex items-center justify-between px-6 py-4 bg-[#101024] border-b border-[#23234a]">
+            <div className="flex items-center gap-3">
+              <Image src="/images/logo.png" alt="Pingaksh Logo" width={40} height={40} className="object-contain" />
+              <span className="font-bold text-xl tracking-widest">PINGAKSH</span>
+              <span className="text-xs font-semibold ml-2 opacity-60">CREATIVE STUDIO</span>
+            </div>
+            <button
+              className="flex flex-col gap-1 p-2"
+              aria-label="Close navigation menu"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <div className="w-7 h-1 bg-white rounded rotate-45 translate-y-1.5"></div>
+              <div className="w-7 h-1 bg-white rounded opacity-0"></div>
+              <div className="w-7 h-1 bg-white rounded -rotate-45 -translate-y-1.5"></div>
+            </button>
+          </div>
+          <nav className="flex-1 flex flex-col items-center justify-center">
+            <ul className="flex flex-col gap-8 text-2xl font-bold">
+              {NAV_LINKS.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className={`block px-6 py-3 rounded transition-colors ${link.active ? "text-cyan-400 bg-cyan-400/10 border-l-4 border-cyan-400" : "hover:text-cyan-300 hover:bg-white/5"}`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      )}
 
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center mt-18 px-4 bg-gradient-to-b from-[#101024] to-[#181830] rounded-b-[3rem] shadow-xl border-b-4 border-[#23234a] overflow-hidden min-h-[400px] md:min-h-[500px]"
@@ -348,19 +369,20 @@ export default function Home() {
                   <div className="w-6 h-6 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <span className="text-white text-xs">📍</span>
                   </div>
-                  <p className="text-gray-400 text-sm">123 Creative Street, Digital City, DC 12345</p>
+                  <p className="text-gray-400 text-sm">Near Government Polytechnic, Vithhal Nagar Khamgaon, District Buldhana, Maharashtra, 443404</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 bg-gradient-to-br from-fuchsia-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <span className="text-white text-xs">📧</span>
                   </div>
-                  <p className="text-gray-400 text-sm">info@pingaksh.com</p>
+                  <p className="text-gray-400 text-sm">pingakshinnovations24@gmail.com</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <span className="text-white text-xs">📞</span>
                   </div>
-                  <p className="text-gray-400 text-sm">+1 (555) 123-4567</p>
+                  <p className="text-gray-400 text-sm">+91-9834828054</p>
+                  <p className="text-gray-400 text-sm">+91-7972392628</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -385,7 +407,15 @@ export default function Home() {
             <div className="flex items-center gap-2">
               <span className="text-gray-400 text-sm">Made with</span>
               <div className="w-4 h-4 bg-gradient-to-br from-red-500 to-pink-600 rounded-full animate-pulse"></div>
-              <span className="text-gray-400 text-sm">by Pingaksh Team</span>
+                              <span className="text-gray-400 text-sm">by </span>
+                <a 
+                  href="https://pingaksh-innovations-web.vercel.app/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-cyan-400 hover:text-cyan-600 transition-colors text-sm"
+                >
+                  Pingaksh Innovations
+                </a>
             </div>
           </div>
         </div>
