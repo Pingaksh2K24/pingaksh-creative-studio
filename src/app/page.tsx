@@ -1,6 +1,9 @@
 "use client"
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Header from "./Header";
+import Hero from "./Hero";
+import Footer from "./Footer";
 
 const NAV_LINKS = [
   { label: "HOME", href: "#", active: true },
@@ -32,7 +35,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#0a0a1a] text-white font-sans flex flex-col">
       {/* Smoke Cursor Effect */}
       <div className="fixed pointer-events-none z-50">
-        <div 
+        <div
           className="absolute w-4 h-4 bg-gradient-to-r from-cyan-400 to-fuchsia-500 rounded-full blur-sm opacity-60 animate-pulse"
           style={{
             left: mousePosition.x - 8,
@@ -40,7 +43,7 @@ export default function Home() {
             transform: 'translate(-50%, -50%)',
           }}
         />
-        <div 
+        <div
           className="absolute w-8 h-8 bg-gradient-to-r from-cyan-300 to-fuchsia-400 rounded-full blur-md opacity-40 animate-ping"
           style={{
             left: mousePosition.x - 16,
@@ -48,7 +51,7 @@ export default function Home() {
             transform: 'translate(-50%, -50%)',
           }}
         />
-        <div 
+        <div
           className="absolute w-12 h-12 bg-gradient-to-r from-cyan-200 to-fuchsia-300 rounded-full blur-lg opacity-20 animate-pulse"
           style={{
             left: mousePosition.x - 24,
@@ -58,46 +61,7 @@ export default function Home() {
         />
       </div>
 
-      {/* Header/Navbar */}
-      <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between bg-[#101024] shadow-lg border-b border-[#23234a]">
-        {/* Logo and Company Name (left) */}
-        <div className="flex items-center gap-3">
-          <Image src="/images/logo.png" alt="Pingaksh Logo" width={40} height={40} className="object-contain" />
-          <span className="font-bold text-xl tracking-widest">PINGAKSH</span>
-          <span className="text-xs font-semibold ml-2 opacity-60">CREATIVE STUDIO</span>
-        </div>
-        {/* Hamburger Menu (center, mobile only) */}
-        <div className="flex-1 flex justify-center md:hidden">
-          <button
-            className="flex flex-col gap-1 p-2"
-            aria-label="Open navigation menu"
-            onClick={() => setIsMobileMenuOpen(true)}
-          >
-            <div className="w-7 h-1 bg-white rounded transition-all"></div>
-            <div className="w-7 h-1 bg-white rounded transition-all"></div>
-            <div className="w-7 h-1 bg-white rounded transition-all"></div>
-          </button>
-        </div>
-        {/* Navlinks (center, desktop only) */}
-        <nav className="hidden md:flex flex-1 justify-center">
-          <ul className="flex gap-8 text-sm font-semibold">
-            {NAV_LINKS.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  className={`px-2 py-1 rounded transition-colors ${link.active ? "text-cyan-400 border-b-2 border-cyan-400" : "hover:text-cyan-300"}`}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        {/* CONTACT US button (right) */}
-        <button className="bg-cyan-500 hover:bg-cyan-400 text-white px-5 py-2 rounded-lg font-semibold transition-colors shadow-md">
-          CONTACT US
-        </button>
-      </header>
+      <Header onMenuOpen={() => setIsMobileMenuOpen(true)} />
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 bg-black/90 flex flex-col">
@@ -135,29 +99,52 @@ export default function Home() {
         </div>
       )}
 
-      {/* Hero Section */}
-      <section className="relative flex flex-col items-center justify-center mt-18 px-4 bg-gradient-to-b from-[#101024] to-[#181830] rounded-b-[3rem] shadow-xl border-b-4 border-[#23234a] overflow-hidden min-h-[400px] md:min-h-[500px]"
-        style={{
-          backgroundImage: `url('/images/header.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
-        {/* Overlay for text readability */}
-        <div className="absolute inset-0 bg-black/50 rounded-b-[3rem]"></div>
-        <div className="flex flex-col md:flex-row items-end justify-between w-full max-w-6xl gap-8 h-full">
-          {/* Left Side - Text Content */}
-          <div className="flex-1 flex flex-col items-start text-left relative z-10 justify-end pb-8">
-            <h1 className="text-4xl md:text-5xl font-extrabold tracking-widest mb-2 text-white drop-shadow-lg">PINGAKSH CREATIVE STUDIO</h1>
-            <h2 className="text-lg md:text-2xl font-semibold mb-4 text-cyan-300 tracking-wide">INNOVATING MEDIA MANAGEMENT</h2>
-            <p className="text-base md:text-lg text-white/80 max-w-lg mb-6">
-              We help you manage your political campaigns, social media, graphics, and content with a futuristic, creative approach.
-            </p>
+      <Hero />
+
+      {/* Inside Pingaksh Section */}
+      <section id="inside-pingaksh" className="relative flex flex-col items-center justify-center py-16 px-4 bg-[#101024] border-b-4 border-[#23234a] rounded-t-[3rem]">
+        <div className="mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 text-left">Inside Pingaksh</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-fuchsia-500 rounded-full mb-4"></div>
+        </div>
+        <div className="w-full max-w-8xl flex flex-col md:flex-row items-left gap-2">
+          <div className="flex-shrink-0 w-full md:w-1/2 flex justify-left md:mb-0">
+            <img src="/images/image3.jpg" alt="Inside Pingaksh" className="rounded-2xl shadow-xl w-full max-w-sm object-cover" />
           </div>
-          {/* Right Side - Header Image */}
-          <div className="flex-1 flex items-end justify-center pb-8">
-            {/* <Image src="/images/header.jpg" alt="Header Illustration" width={400} height={300} className="object-contain rounded-2xl shadow-2xl" /> */}
+          <div className="w-full md:w-1/2 flex flex-col gap-0 text-left text-white text-base md:text-lg">
+            {/* Who We Are */}
+            <div>
+              <div className="font-semibold text-cyan-300 flex items-center gap-2 mb-2">Who We Are</div>
+              <p className="mb-2">Pingaksh Creative Studio is a dynamic team of strategists, designers, storytellers, and technologists dedicated to reshaping political narratives. Founded with a vision to blend creativity with purpose, we specialize in crafting impactful digital identities and campaign experiences that influence minds and win hearts.</p>
+              <p>We believe that powerful visuals and clear messaging are not just tools—they’re weapons in the political battlefield.</p>
+            </div>
+            {/* Vision & Mission */}
+            <div>
+              <div className="font-semibold text-fuchsia-300 flex items-center gap-2 mb-2">Our Vision & Mission</div>
+              <div className="flex flex-col gap-1 mb-2">
+                <div className="flex items-center gap-2"><span className="text-xl">🔭</span> <span className="font-semibold text-fuchsia-200">Vision</span></div>
+                <div className="ml-7">To become India’s leading political and creative studio that empowers leaders and changemakers through strategic design, content, and technology.</div>
+              </div>
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-2"><span className="text-xl">🎯</span> <span className="font-semibold text-fuchsia-200">Mission</span></div>
+                <div className="ml-7">To deliver data-driven, visually impactful, and result-oriented branding & campaign solutions that connect with the people and convert votes into victories.</div>
+              </div>
+            </div>
+            {/* Why Political & Digital Branding Matters */}
+            <div>
+              <div className="font-semibold text-blue-300 flex items-center gap-2 mb-2">Why Political & Digital Branding Matters</div>
+              <p className="mb-2">In today’s hyper-connected world, elections aren’t just won on the ground—they’re also won on screens.<br />Voters don’t just listen, they scroll, swipe, and share. That’s why your digital image, messaging, posters, and media presence must reflect trust, vision, and leadership.</p>
+              <div className="mb-2">
+                <span className="font-semibold">A strong political brand:</span>
+                <ul className="list-disc list-inside ml-4 mt-1 space-y-1 text-white/80">
+                  <li>Builds public trust</li>
+                  <li>Unifies party identity</li>
+                  <li>Connects emotionally with voters</li>
+                  <li>Drives engagement across digital platforms</li>
+                </ul>
+              </div>
+              <p>At Pingaksh, we understand both the art of influence and the science of strategy. From poster designs to content writing, from campaign planning to digital outreach—we do it all, with impact.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -175,65 +162,105 @@ export default function Home() {
         </div>
         <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl w-full">
           {/* Top Row */}
-          <div className="bg-gradient-to-br from-[#181830] to-[#1a1a40] rounded-2xl border-2 border-fuchsia-600/60 shadow-2xl p-8 flex flex-col items-center text-center neon-card hover:border-fuchsia-400/80 hover:shadow-fuchsia-500/25 hover:scale-105 transition-all duration-500 min-h-[320px] relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-cyan-400 via-fuchsia-500 via-purple-600 to-blue-500 bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="w-16 h-16 bg-gradient-to-br from-fuchsia-500 to-purple-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-fuchsia-500/50 transition-all duration-300 relative z-10">
-              <Image src="/file.svg" alt="Political Campaign" width={32} height={32} className="filter brightness-0 invert" />
-            </div>
-            <h4 className="text-lg font-bold mb-2 relative z-10 group-hover:text-fuchsia-300 transition-colors duration-300">Political Campaign</h4>
-            <p className="text-sm opacity-80 mb-4 relative z-10 group-hover:opacity-90 transition-opacity duration-300">Lorem elit utatur exercitationem enim omnis non enim consequatur error enimings. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-            <button className="bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:from-fuchsia-400 hover:to-purple-500 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-fuchsia-500/50 hover:scale-110 relative z-10">Go to See</button>
-          </div>
-          <div className="bg-gradient-to-br from-[#181830] to-[#1a1a40] rounded-2xl border-2 border-cyan-600/60 shadow-2xl p-8 flex flex-col items-center text-center neon-card hover:border-cyan-400/80 hover:shadow-cyan-500/25 hover:scale-105 transition-all duration-500 min-h-[320px] relative overflow-hidden group">
+          {/* Card 1 */}
+          <div className="bg-gradient-to-br from-[#181830] to-[#1a1a40] rounded-2xl border-2 border-cyan-500/60 shadow-2xl p-8 flex flex-col items-center text-center neon-card hover:border-cyan-400/80 hover:shadow-cyan-500/25 hover:scale-105 transition-all duration-500 min-h-[320px] relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-green-400 via-cyan-500 via-blue-600 to-purple-500 bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-cyan-400 via-fuchsia-500 via-purple-600 to-blue-500 bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-cyan-500/50 transition-all duration-300 relative z-10">
-              <Image src="/globe.svg" alt="Social Media Marketing" width={32} height={32} className="filter brightness-0 invert" />
+              <Image src="/file.svg" alt="Political Branding" width={32} height={32} className="filter brightness-0 invert" />
             </div>
-            <h4 className="text-lg font-bold mb-2 relative z-10 group-hover:text-cyan-300 transition-colors duration-300">Social Media Marketing</h4>
-            <p className="text-sm opacity-80 mb-4 relative z-10 group-hover:opacity-90 transition-opacity duration-300">Doca ex files laboriosam dolore create dicta commodi ex error enimings. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
-            <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-cyan-500/50 hover:scale-110 relative z-10">Go to See</button>
+            <h4 className="text-lg font-bold mb-2 relative z-10 group-hover:text-cyan-300 transition-colors duration-300">Political Branding & Identity Design</h4>
+            <p className="text-sm opacity-80 mb-4 relative z-10 group-hover:opacity-90 transition-opacity duration-300">We craft unique political brands that resonate with voters. From logo and color palette to complete identity design, we ensure your campaign stands out and builds trust.</p>
+            <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-cyan-500/50 hover:scale-110 relative z-10">View Details</button>
           </div>
-          <div className="bg-gradient-to-br from-[#181830] to-[#1a1a40] rounded-2xl border-2 border-fuchsia-600/60 shadow-2xl p-8 flex flex-col items-center text-center neon-card hover:border-fuchsia-400/80 hover:shadow-fuchsia-500/25 hover:scale-105 transition-all duration-500 min-h-[320px] relative overflow-hidden group">
+          {/* Card 2 */}
+          <div className="bg-gradient-to-br from-[#181830] to-[#1a1a40] rounded-2xl border-2 border-fuchsia-500/60 shadow-2xl p-8 flex flex-col items-center text-center neon-card hover:border-fuchsia-400/80 hover:shadow-fuchsia-500/25 hover:scale-105 transition-all duration-500 min-h-[320px] relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-pink-400 via-fuchsia-500 via-purple-600 to-indigo-500 bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-green-400 via-cyan-500 via-blue-600 to-purple-500 bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="w-16 h-16 bg-gradient-to-br from-fuchsia-500 to-purple-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-fuchsia-500/50 transition-all duration-300 relative z-10">
-              <Image src="/window.svg" alt="Graphics Designing" width={32} height={32} className="filter brightness-0 invert" />
+              <Image src="/globe.svg" alt="Election Campaign" width={32} height={32} className="filter brightness-0 invert" />
             </div>
-            <h4 className="text-lg font-bold mb-2 relative z-10 group-hover:text-fuchsia-300 transition-colors duration-300">Graphics Designing</h4>
-            <p className="text-sm opacity-80 mb-4 relative z-10 group-hover:opacity-90 transition-opacity duration-300">Exercitationem architecto neutra earer error enimings et error enimings. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.</p>
-            <button className="bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:from-fuchsia-400 hover:to-purple-500 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-fuchsia-500/50 hover:scale-110 relative z-10">Go to See</button>
+            <h4 className="text-lg font-bold mb-2 relative z-10 group-hover:text-fuchsia-300 transition-colors duration-300">Election Campaign Strategy & Management</h4>
+            <p className="text-sm opacity-80 mb-4 relative z-10 group-hover:opacity-90 transition-opacity duration-300">Comprehensive planning, execution, and monitoring of election campaigns. We manage everything from ground strategy to digital outreach, ensuring maximum impact and real-time adaptability.</p>
+            <button className="bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:from-fuchsia-400 hover:to-purple-500 text-white px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-fuchsia-500/50 hover:scale-110 relative z-10">View Details</button>
+          </div>
+          {/* Card 3 */}
+          <div className="bg-gradient-to-br from-[#181830] to-[#1a1a40] rounded-2xl border-2 border-purple-500/60 shadow-2xl p-8 flex flex-col items-center text-center neon-card hover:border-purple-400/80 hover:shadow-purple-500/25 hover:scale-105 transition-all duration-500 min-h-[320px] relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-pink-400 via-fuchsia-500 via-purple-600 to-indigo-500 bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-fuchsia-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-purple-500/50 transition-all duration-300 relative z-10">
+              <Image src="/window.svg" alt="Media Planning" width={32} height={32} className="filter brightness-0 invert" />
+            </div>
+            <h4 className="text-lg font-bold mb-2 relative z-10 group-hover:text-purple-300 transition-colors duration-300">Media Planning & Outreach</h4>
+            <p className="text-sm opacity-80 mb-4 relative z-10 group-hover:opacity-90 transition-opacity duration-300">Strategic media planning for optimal coverage across print, digital, and broadcast. We handle press releases, media relations, and outreach to amplify your message to the right audience.</p>
+            <button className="bg-gradient-to-r from-purple-500 to-fuchsia-600 hover:from-purple-400 hover:to-fuchsia-500 text-white px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-purple-500/50 hover:scale-110 relative z-10">View Details</button>
           </div>
           {/* Bottom Row */}
-          <div className="bg-gradient-to-br from-[#181830] to-[#1a1a40] rounded-2xl border-2 border-cyan-600/60 shadow-2xl p-8 flex flex-col items-center text-center neon-card hover:border-cyan-400/80 hover:shadow-cyan-500/25 hover:scale-105 transition-all duration-500 min-h-[320px] relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-yellow-400 via-orange-500 via-red-500 to-pink-500 bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-cyan-500/50 transition-all duration-300 relative z-10">
-              <Image src="/vercel.svg" alt="Content Writing" width={32} height={32} className="filter brightness-0 invert" />
-            </div>
-            <h4 className="text-lg font-bold mb-2 relative z-10 group-hover:text-cyan-300 transition-colors duration-300">Content Writing</h4>
-            <p className="text-sm opacity-80 mb-4 relative z-10 group-hover:opacity-90 transition-opacity duration-300">Enim error enim architecto neutra earer error enimings et error enimings. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt.</p>
-            <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-cyan-500/50 hover:scale-110 relative z-10">Go to See</button>
-          </div>
-          <div className="bg-gradient-to-br from-[#181830] to-[#1a1a40] rounded-2xl border-2 border-blue-600/60 shadow-2xl p-8 flex flex-col items-center text-center neon-card hover:border-blue-400/80 hover:shadow-blue-500/25 hover:scale-105 transition-all duration-500 min-h-[320px] relative overflow-hidden group">
+          {/* Card 4 */}
+          <div className="bg-gradient-to-br from-[#181830] to-[#1a1a40] rounded-2xl border-2 border-blue-500/60 shadow-2xl p-8 flex flex-col items-center text-center neon-card hover:border-blue-400/80 hover:shadow-blue-500/25 hover:scale-105 transition-all duration-500 min-h-[320px] relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-emerald-400 via-teal-500 via-cyan-500 to-blue-500 bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-yellow-400 via-orange-500 via-red-500 to-pink-500 bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-blue-500/50 transition-all duration-300 relative z-10">
-              <Image src="/globe.svg" alt="Extra Service" width={32} height={32} className="filter brightness-0 invert" />
+              <Image src="/vercel.svg" alt="Digital Marketing" width={32} height={32} className="filter brightness-0 invert" />
             </div>
-            <h4 className="text-lg font-bold mb-2 relative z-10 group-hover:text-blue-300 transition-colors duration-300">Extra Service</h4>
-            <p className="text-sm opacity-80 mb-4 relative z-10 group-hover:opacity-90 transition-opacity duration-300">Seosertas chasdeasdeae commodi error enimings. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.</p>
-            <button className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-blue-500/50 hover:scale-110 relative z-10">Go to See</button>
+            <h4 className="text-lg font-bold mb-2 relative z-10 group-hover:text-blue-300 transition-colors duration-300">Digital Marketing & Voter Engagement</h4>
+            <p className="text-sm opacity-80 mb-4 relative z-10 group-hover:opacity-90 transition-opacity duration-300">Targeted digital campaigns to connect with voters on every platform. We use social media, email, and digital ads to boost engagement and drive meaningful conversations.</p>
+            <button className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 text-white px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-blue-500/50 hover:scale-110 relative z-10">View Details</button>
           </div>
-          <div className="bg-gradient-to-br from-[#181830] to-[#1a1a40] rounded-2xl border-2 border-fuchsia-600/60 shadow-2xl p-8 flex flex-col items-center text-center neon-card hover:border-fuchsia-400/80 hover:shadow-fuchsia-500/25 hover:scale-105 transition-all duration-500 min-h-[320px] relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-violet-400 via-purple-500 via-fuchsia-500 to-pink-500 bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="w-16 h-16 bg-gradient-to-br from-fuchsia-500 to-purple-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-fuchsia-500/50 transition-all duration-300 relative z-10">
-              <Image src="/file.svg" alt="Another Service" width={32} height={32} className="filter brightness-0 invert" />
+          {/* Card 5 */}
+          <div className="bg-gradient-to-br from-[#181830] to-[#1a1a40] rounded-2xl border-2 border-emerald-500/60 shadow-2xl p-8 flex flex-col items-center text-center neon-card hover:border-emerald-400/80 hover:shadow-emerald-500/25 hover:scale-105 transition-all duration-500 min-h-[320px] relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-emerald-400 via-teal-500 via-cyan-500 to-blue-500 bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-emerald-500/50 transition-all duration-300 relative z-10">
+              <Image src="/globe.svg" alt="Creative Graphic Design" width={32} height={32} className="filter brightness-0 invert" />
             </div>
-            <h4 className="text-lg font-bold mb-2 relative z-10 group-hover:text-fuchsia-300 transition-colors duration-300">Another Service</h4>
-            <p className="text-sm opacity-80 mb-4 relative z-10 group-hover:opacity-90 transition-opacity duration-300">Contentus blandit leoquimus orem praesentium tenetur, consequatur error. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
+            <h4 className="text-lg font-bold mb-2 relative z-10 group-hover:text-emerald-300 transition-colors duration-300">Creative Graphic Design</h4>
+            <p className="text-sm opacity-80 mb-4 relative z-10 group-hover:opacity-90 transition-opacity duration-300">Visually stunning graphics tailored for political campaigns. Our team creates infographics, banners, and creative visuals that capture attention and communicate your message.</p>
+            <button className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-emerald-500/50 hover:scale-110 relative z-10">View Details</button>
+          </div>
+          {/* Card 6 */}
+          <div className="bg-gradient-to-br from-[#181830] to-[#1a1a40] rounded-2xl border-2 border-orange-500/60 shadow-2xl p-8 flex flex-col items-center text-center neon-card hover:border-orange-400/80 hover:shadow-orange-500/25 hover:scale-105 transition-all duration-500 min-h-[320px] relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-violet-400 via-purple-500 via-fuchsia-500 to-pink-500 bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-pink-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-orange-500/50 transition-all duration-300 relative z-10">
+              <Image src="/file.svg" alt="Poster Designing" width={32} height={32} className="filter brightness-0 invert" />
+            </div>
+            <h4 className="text-lg font-bold mb-2 relative z-10 group-hover:text-orange-300 transition-colors duration-300">Poster Designing</h4>
+            <p className="text-sm opacity-80 mb-4 relative z-10 group-hover:opacity-90 transition-opacity duration-300">Professional poster designs for rallies, events, and digital campaigns. We ensure your posters are eye-catching, on-brand, and effective in mobilizing supporters.</p>
+            <button className="bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-400 hover:to-pink-500 text-white px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-orange-500/50 hover:scale-110 relative z-10">View Details</button>
+          </div>
+          {/* Card 7 */}
+          <div className="bg-gradient-to-br from-[#181830] to-[#1a1a40] rounded-2xl border-2 border-pink-500/60 shadow-2xl p-8 flex flex-col items-center text-center neon-card hover:border-pink-400/80 hover:shadow-pink-500/25 hover:scale-105 transition-all duration-500 min-h-[320px] relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-pink-400 via-fuchsia-500 via-purple-600 to-indigo-500 bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-fuchsia-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-pink-500/50 transition-all duration-300 relative z-10">
+              <Image src="/file.svg" alt="Content Writing & Messaging" width={32} height={32} className="filter brightness-0 invert" />
+            </div>
+            <h4 className="text-lg font-bold mb-2 relative z-10 group-hover:text-pink-300 transition-colors duration-300">Content Writing & Messaging</h4>
+            <p className="text-sm opacity-80 mb-4 relative z-10 group-hover:opacity-90 transition-opacity duration-300">Compelling speeches, manifestos, and campaign messaging. We craft persuasive content that inspires action and builds a strong narrative for your campaign.</p>
+            <button className="bg-gradient-to-r from-pink-500 to-fuchsia-600 hover:from-pink-400 hover:to-fuchsia-500 text-white px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-pink-500/50 hover:scale-110 relative z-10">View Details</button>
+          </div>
+          {/* Card 8 */}
+          <div className="bg-gradient-to-br from-[#181830] to-[#1a1a40] rounded-2xl border-2 border-indigo-500/60 shadow-2xl p-8 flex flex-col items-center text-center neon-card hover:border-indigo-400/80 hover:shadow-indigo-500/25 hover:scale-105 transition-all duration-500 min-h-[320px] relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-indigo-400 via-blue-500 via-purple-600 to-fuchsia-500 bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-indigo-500/50 transition-all duration-300 relative z-10">
+              <Image src="/globe.svg" alt="Political Articles & Thought Leadership" width={32} height={32} className="filter brightness-0 invert" />
+            </div>
+            <h4 className="text-lg font-bold mb-2 relative z-10 group-hover:text-indigo-300 transition-colors duration-300">Political Articles & Thought Leadership</h4>
+            <p className="text-sm opacity-80 mb-4 relative z-10 group-hover:opacity-90 transition-opacity duration-300">Expert articles, blogs, and opinion pieces to establish your thought leadership. We help you influence public opinion and position you as a credible voice in politics.</p>
+            <button className="bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-400 hover:to-blue-500 text-white px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-indigo-500/50 hover:scale-110 relative z-10">View Details</button>
+          </div>
+          {/* Card 9 */}
+          <div className="bg-gradient-to-br from-[#181830] to-[#1a1a40] rounded-2xl border-2 border-yellow-500/60 shadow-2xl p-8 flex flex-col items-center text-center neon-card hover:border-yellow-400/80 hover:shadow-yellow-500/25 hover:scale-105 transition-all duration-500 min-h-[320px] relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-yellow-400 via-orange-500 via-red-500 to-pink-500 bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-yellow-500/50 transition-all duration-300 relative z-10">
+              <Image src="/vercel.svg" alt="Technical Support & IT Infrastructure" width={32} height={32} className="filter brightness-0 invert" />
+            </div>
+            <h4 className="text-lg font-bold mb-2 relative z-10 group-hover:text-yellow-300 transition-colors duration-300">Technical Support & IT Infrastructure</h4>
+            <p className="text-sm opacity-80 mb-4 relative z-10 group-hover:opacity-90 transition-opacity duration-300">Robust IT solutions for seamless campaign operations. From website management to secure data handling, we provide technical support and infrastructure setup.</p>
+            <button className="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-400 hover:to-orange-500 text-white px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-yellow-500/50 hover:scale-110 relative z-10">View Details</button>
           </div>
         </div>
       </section>
@@ -303,123 +330,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="mt-auto bg-gradient-to-b from-[#101024] to-[#0a0a1a] border-t border-[#23234a]">
-        <div className="max-w-7xl mx-auto px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Company Info */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Image src="/images/logo.png" alt="Pingaksh Logo" width={40} height={40} className="object-contain" />
-                <div>
-                  <h3 className="text-xl font-bold tracking-widest">PINGAKSH</h3>
-                  <p className="text-xs font-semibold opacity-60">CREATIVE STUDIO</p>
-                </div>
-              </div>
-              <p className="text-sm text-gray-400 leading-relaxed">
-                Innovating media management with cutting-edge digital solutions. We help businesses thrive in the digital age with our comprehensive creative services.
-              </p>
-              <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                  <span className="text-white font-bold text-sm">f</span>
-                </a>
-                <a href="#" className="w-10 h-10 bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                  <span className="text-white font-bold text-sm">y</span>
-                </a>
-                <a href="#" className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                  <span className="text-white font-bold text-sm">t</span>
-                </a>
-                <a href="#" className="w-10 h-10 bg-gradient-to-br from-purple-500 to-fuchsia-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                  <span className="text-white font-bold text-sm">i</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Services */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-bold text-white border-b border-cyan-500/30 pb-2">Our Services</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Political Campaign Management</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Social Media Marketing</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Graphics Designing</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Content Writing</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Digital Strategy</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Brand Development</a></li>
-              </ul>
-            </div>
-
-            {/* Quick Links */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-bold text-white border-b border-fuchsia-500/30 pb-2">Quick Links</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-fuchsia-400 transition-colors duration-300 text-sm">About Us</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-fuchsia-400 transition-colors duration-300 text-sm">Our Team</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-fuchsia-400 transition-colors duration-300 text-sm">Portfolio</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-fuchsia-400 transition-colors duration-300 text-sm">Testimonials</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-fuchsia-400 transition-colors duration-300 text-sm">Blog</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-fuchsia-400 transition-colors duration-300 text-sm">Careers</a></li>
-              </ul>
-            </div>
-
-            {/* Contact Info */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-bold text-white border-b border-blue-500/30 pb-2">Contact Us</h4>
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-white text-xs">📍</span>
-                  </div>
-                  <p className="text-gray-400 text-sm">Near Government Polytechnic, Vithhal Nagar Khamgaon, District Buldhana, Maharashtra, 443404</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-gradient-to-br from-fuchsia-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-white text-xs">📧</span>
-                  </div>
-                  <p className="text-gray-400 text-sm">pingakshinnovations24@gmail.com</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-white text-xs">📞</span>
-                  </div>
-                  <p className="text-gray-400 text-sm">+91-9834828054</p>
-                  <p className="text-gray-400 text-sm">+91-7972392628</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-white text-xs">🕒</span>
-                  </div>
-                  <p className="text-gray-400 text-sm">Mon - Fri: 9AM - 6PM</p>
-                </div>
-              </div>
-            </div>
+      {/* Our Winning Edge Section */}
+      <section id="winning-edge" className="relative flex flex-col items-center justify-center py-16 px-4 bg-[#181830] border-t-4 border-[#23234a] rounded-t-[2rem]">
+        <div className="w-full flex flex-col gap-8">
+          <div className="text-center mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">Our Winning Edge</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-fuchsia-500 mx-auto rounded-full"></div>
           </div>
-
-          {/* Bottom Bar */}
-          <div className="border-t border-[#23234a] mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <p className="text-gray-400 text-sm">© 2024 Pingaksh Creative Studio. All rights reserved.</p>
-              <div className="flex gap-4">
-                <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Privacy Policy</a>
-                <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Terms of Service</a>
-                <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Sitemap</a>
+          <p className="text-white/90 text-base md:text-lg text-center mb-6">At Pingaksh Creative Studio, we don’t just design campaigns we craft winning narratives. Here’s what sets us apart:</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+            {/* Card 1 */}
+            <div className="bg-gradient-to-br from-[#23234a] to-[#181830] rounded-2xl border-2 border-yellow-400/40 shadow-xl p-6 flex flex-col items-center text-center hover:border-yellow-400/80 hover:shadow-yellow-500/25 hover:scale-105 transition-all duration-500 min-h-[260px] w-full">
+              <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-fuchsia-500 rounded-xl flex items-center justify-center mb-4 shadow-lg">
+                <span className="text-2xl">⚡</span>
               </div>
+              <h4 className="text-lg font-bold mb-2 text-yellow-300">Fast Turnaround, High-Quality Design</h4>
+              <p className="text-sm opacity-90">We understand the urgency of political campaigns. Whether it’s last-minute posters or digital creatives for breaking news, our team delivers visually compelling content at speed without compromising on quality.</p>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-gray-400 text-sm">Made with</span>
-              <div className="w-4 h-4 bg-gradient-to-br from-red-500 to-pink-600 rounded-full animate-pulse"></div>
-                              <span className="text-gray-400 text-sm">by </span>
-                <a 
-                  href="https://pingaksh-innovations-web.vercel.app/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-cyan-400 hover:text-cyan-600 transition-colors text-sm"
-                >
-                  Pingaksh Innovations
-                </a>
+            {/* Card 2 */}
+            <div className="bg-gradient-to-br from-[#23234a] to-[#181830] rounded-2xl border-2 border-cyan-400/40 shadow-xl p-6 flex flex-col items-center text-center hover:border-cyan-400/80 hover:shadow-cyan-500/25 hover:scale-105 transition-all duration-500 min-h-[260px] w-full">
+              <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center mb-4 shadow-lg">
+                <span className="text-2xl">🗳️</span>
+              </div>
+              <h4 className="text-lg font-bold mb-2 text-cyan-300">In-Depth Understanding of the Political Landscape</h4>
+              <p className="text-sm opacity-90">From booth-level dynamics to mass voter psychology, our team brings deep insights into regional politics, voter behavior, and electoral trends, ensuring every campaign hits the right chord with the right people.</p>
+            </div>
+            {/* Card 3 */}
+            <div className="bg-gradient-to-br from-[#23234a] to-[#181830] rounded-2xl border-2 border-fuchsia-400/40 shadow-xl p-6 flex flex-col items-center text-center hover:border-fuchsia-400/80 hover:shadow-fuchsia-500/25 hover:scale-105 transition-all duration-500 min-h-[260px] w-full">
+              <div className="w-12 h-12 bg-gradient-to-br from-fuchsia-400 to-purple-500 rounded-xl flex items-center justify-center mb-4 shadow-lg">
+                <span className="text-2xl">🔄</span>
+              </div>
+              <h4 className="text-lg font-bold mb-2 text-fuchsia-300">End-to-End Election Campaign Support</h4>
+              <p className="text-sm opacity-90">We are more than just a design agency. From ideation to execution, we manage every layer of the campaign strategy, content, media, technology, outreach, and more so you can focus on your core mission: connecting with the people.</p>
+            </div>
+            {/* Card 4 */}
+            <div className="bg-gradient-to-br from-[#23234a] to-[#181830] rounded-2xl border-2 border-blue-400/40 shadow-xl p-6 flex flex-col items-center text-center hover:border-blue-400/80 hover:shadow-blue-500/25 hover:scale-105 transition-all duration-500 min-h-[260px] w-full">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl flex items-center justify-center mb-4 shadow-lg">
+                <span className="text-2xl">🎯</span>
+              </div>
+              <h4 className="text-lg font-bold mb-2 text-blue-300">One-Stop Creative & Tech Solution</h4>
+              <p className="text-sm opacity-90">Whether you need political branding, content writing, social media, tech support, or on-ground coordination, Pingaksh is your single destination. We blend creativity with technology to deliver complete, campaign-ready solutions.</p>
             </div>
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* <Footer /> */}
     </div>
   );
 }
