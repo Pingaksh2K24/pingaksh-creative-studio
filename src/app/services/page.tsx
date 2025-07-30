@@ -9,7 +9,7 @@ export default function Services() {
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-fuchsia-500/5"></div>
         <div className="absolute top-20 left-10 w-32 h-32 bg-cyan-400/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-fuchsia-400/10 rounded-full blur-3xl"></div>
-        
+
         <div className="relative max-w-6xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">Our Services</h1>
           <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-fuchsia-500 rounded-full mx-auto mb-8"></div>
@@ -23,7 +23,7 @@ export default function Services() {
       <section className="py-16 px-4 bg-[#101024]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
+
             {/* Political Campaign Management */}
             <div className="bg-gradient-to-br from-cyan-500/10 to-transparent p-8 rounded-2xl border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300">
               <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center mb-6">
@@ -209,7 +209,7 @@ export default function Services() {
             <h2 className="text-4xl font-bold text-white mb-4">Our Process</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-fuchsia-500 rounded-full mx-auto"></div>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -220,7 +220,7 @@ export default function Services() {
                 Understanding your goals, audience, and political landscape.
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-fuchsia-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white text-xl font-bold">2</span>
@@ -230,7 +230,7 @@ export default function Services() {
                 Developing comprehensive campaign strategies and messaging.
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white text-xl font-bold">3</span>
@@ -240,7 +240,7 @@ export default function Services() {
                 Implementing campaigns with precision and creativity.
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white text-xl font-bold">4</span>
@@ -259,7 +259,7 @@ export default function Services() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-white mb-6">Ready to Start Your Campaign?</h2>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Le&apos;t's discuss how our services can help you connect with voters and achieve your political goals.
+            Let&apos;s discuss how our services can help you connect with voters and achieve your political goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-cyan-500/25">

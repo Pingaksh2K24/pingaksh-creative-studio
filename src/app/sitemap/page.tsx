@@ -36,12 +36,12 @@ export default function Sitemap() {
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-fuchsia-500/5"></div>
         <div className="absolute top-20 left-10 w-32 h-32 bg-cyan-400/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-fuchsia-400/10 rounded-full blur-3xl"></div>
-        
+
         <div className="relative max-w-6xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">Sitemap</h1>
           <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-fuchsia-500 rounded-full mx-auto mb-8"></div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Navigate through all pages and sections of Pingaksh Creative Studio website. Find exactly what you&apos;'re looking for.
+            Navigate through all pages and sections of Pingaksh Creative Studio website. Find exactly what you&apos;re looking for.
           </p>
         </div>
       </section>
@@ -58,7 +58,7 @@ export default function Sitemap() {
                   </div>
                   {category.category}
                 </h2>
-                
+
                 <div className="space-y-4">
                   {category.pages.map((page, pageIndex) => (
                     <div key={page.url} className="bg-[#0a0a1a]/50 rounded-lg p-4 border border-gray-700/30 hover:border-cyan-400/50 transition-all duration-300 group">
@@ -96,7 +96,7 @@ export default function Sitemap() {
             <h2 className="text-4xl font-bold text-white mb-4">Website Overview</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-fuchsia-500 rounded-full mx-auto"></div>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-gradient-to-br from-cyan-500/10 to-transparent p-6 rounded-2xl border border-cyan-500/20 text-center">
               <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-cyan-500/25">
@@ -139,23 +139,22 @@ export default function Sitemap() {
           <h2 className="text-4xl font-bold text-white mb-6">Need Help Navigating?</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-fuchsia-500 rounded-full mx-auto mb-8"></div>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Can&apos;'t find what you&apos;'re looking for? Our team is here to help you navigate our services and find the perfect solution for your political campaign needs.
+            Can&apos;t find what you&apos;re looking for? Our team is here to help you navigate our services and find the perfect solution for your political campaign needs.
           </p>
-          
           <div className="bg-gradient-to-br from-cyan-500/10 to-fuchsia-500/10 rounded-2xl border border-cyan-500/20 p-8">
             <h3 className="text-2xl font-bold text-white mb-4">Get Direct Assistance</h3>
             <p className="text-gray-300 mb-6">
               Contact our team directly for personalized guidance and support.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
+              <Link
                 href="/contact-us"
                 className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-cyan-500/25"
               >
                 Contact Us
               </Link>
-              <Link 
+              <Link
                 href="/services"
                 className="bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:from-fuchsia-400 hover:to-purple-500 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-fuchsia-500/25"
               >
