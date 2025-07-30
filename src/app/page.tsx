@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Header from "./Header";
 import Hero from "./Hero";
-import Footer from "./Footer";
 
 const NAV_LINKS = [
   { label: "HOME", href: "#", active: true },

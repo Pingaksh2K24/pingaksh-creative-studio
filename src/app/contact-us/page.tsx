@@ -14,7 +14,7 @@ export default function ContactUs() {
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">Contact Us</h1>
           <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-fuchsia-500 rounded-full mx-auto mb-8"></div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Ready to transform your political campaign? Let's discuss how we can help you connect with voters and achieve your goals.
+            Ready to transform your political campaign? Let&apos;s discuss how we can help you connect with voters and achieve your goals.
           </p>
         </div>
       </section>
@@ -103,7 +103,7 @@ export default function ContactUs() {
               <div>
                 <h2 className="text-3xl font-bold text-white mb-6">Get in Touch</h2>
                 <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                  We're here to help you build a winning campaign. Reach out to us through any of the channels below, and our team will get back to you within 24 hours.
+                  We&apos;re here to help you build a winning campaign. Reach out to us through any of the channels below, and our team will get back to you within 24 hours.
                 </p>
               </div>
 
@@ -208,7 +208,7 @@ export default function ContactUs() {
             </div>
             
             <div className="bg-gradient-to-r from-blue-500/10 to-transparent p-6 rounded-xl border border-blue-500/20">
-              <h3 className="text-xl font-bold text-blue-300 mb-3">What's included in your campaign packages?</h3>
+              <h3 className="text-xl font-bold text-blue-300 mb-3">What&apos;s included in your campaign packages?</h3>
               <p className="text-gray-300">
                 Our packages include strategy development, visual branding, content creation, social media management, and ongoing campaign support. We customize each package based on your specific needs.
               </p>

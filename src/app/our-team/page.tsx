@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 
 const TEAM_MEMBERS = [
   {
@@ -34,7 +33,7 @@ export default function OurTeam() {
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">Our Team</h1>
           <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-fuchsia-500 rounded-full mx-auto mb-8"></div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Meet the creative minds and strategic experts behind Pingaksh Creative Studio's success in transforming political campaigns across India.
+            Meet the creative minds and strategic experts behind Pingaksh Creative Studio&apos;'s success in transforming political campaigns across India.
           </p>
         </div>
       </section>
@@ -130,7 +129,7 @@ export default function OurTeam() {
               </div>
               <h3 className="text-xl font-bold text-blue-300 mb-3">Integrity & Trust</h3>
               <p className="text-gray-300">
-                We build lasting partnerships through transparent communication, ethical practices, and unwavering commitment to our clients' success.
+                We build lasting partnerships through transparent communication, ethical practices, and unwavering commitment to our clients&apos;' success.
               </p>
             </div>
           </div>
@@ -147,7 +146,7 @@ export default function OurTeam() {
           </p>
           
           <div className="bg-gradient-to-br from-cyan-500/10 to-fuchsia-500/10 rounded-2xl border border-cyan-500/20 p-8">
-            <h3 className="text-2xl font-bold text-white mb-4">We're Looking For</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">We&apos;'re Looking For</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="text-left">
                 <h4 className="text-lg font-bold text-cyan-300 mb-2">Creative Professionals</h4>

@@ -39,7 +39,7 @@ export default function AboutUs() {
             <div className="bg-gradient-to-br from-cyan-500/10 to-fuchsia-500/10 p-8 rounded-2xl border border-cyan-500/20">
               <h3 className="text-2xl font-bold text-cyan-300 mb-4">Why We Exist</h3>
               <p className="text-gray-300 leading-relaxed">
-                In today's digital age, political success requires more than just good intentions. It demands strategic communication, compelling visuals, and authentic storytelling. We bridge the gap between traditional politics and modern digital engagement.
+                In today&apos;s digital age, political success requires more than just good intentions. It demands strategic communication, compelling visuals, and authentic storytelling. We bridge the gap between traditional politics and modern digital engagement.
               </p>
             </div>
           </div>
