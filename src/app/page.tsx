@@ -76,7 +76,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">Inside Pingaksh</h2>
             <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-fuchsia-500 rounded-full mx-auto mb-4"></div>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
-              Discover the creative powerhouse behind India's most impactful political campaigns
+              Discover the creative powerhouse behind India&apos;'s most impactful political campaigns
             </p>
           </div>
 
@@ -91,7 +91,7 @@ export default function Home() {
                   Pingaksh Creative Studio is a dynamic team of strategists, designers, storytellers, and technologists dedicated to reshaping political narratives. Founded with a vision to blend creativity with purpose, we specialize in crafting impactful digital identities and campaign experiences that influence minds and win hearts.
                 </p>
                 <p className="text-gray-300 leading-relaxed font-medium text-lg">
-                  We believe that powerful visuals and clear messaging are not just tools they're weapons in the political battlefield.
+                  We believe that powerful visuals and clear messaging are not just tools they&apos;'re weapons in the political battlefield.
                 </p>
               </div>
 
@@ -103,7 +103,7 @@ export default function Home() {
                   <div>
                     <h4 className="text-xl font-bold text-cyan-200 mb-3">🔭 Vision</h4>
                     <p className="text-gray-300 leading-relaxed text-lg">
-                      To become India's leading political and creative studio that empowers leaders and changemakers through strategic design, content, and technology.
+                      To become India&apos;'s leading political and creative studio that empowers leaders and changemakers through strategic design, content, and technology.
                     </p>
                   </div>
                   
@@ -121,7 +121,7 @@ export default function Home() {
                 <h3 className="text-2xl font-bold text-blue-300 mb-4">Why Political & Digital Branding Matters</h3>
                 
                 <p className="text-gray-300 leading-relaxed mb-6 text-lg">
-                  In today's hyper-connected world, elections aren't just won on the ground they're also won on screens. Voters don't just listen, they scroll, swipe, and share. That's why your digital image, messaging, posters, and media presence must reflect trust, vision, and leadership.
+                  In today&apos;'s hyper-connected world, elections aren&apos;'t just won on the ground they&apos;'re also won on screens. Voters don&apos;'t just listen, they scroll, swipe, and share. That&apos;'s why your digital image, messaging, posters, and media presence must reflect trust, vision, and leadership.
                 </p>
                 
                 <div className="mb-6">

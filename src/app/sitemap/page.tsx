@@ -41,7 +41,7 @@ export default function Sitemap() {
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">Sitemap</h1>
           <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-fuchsia-500 rounded-full mx-auto mb-8"></div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Navigate through all pages and sections of Pingaksh Creative Studio website. Find exactly what you're looking for.
+            Navigate through all pages and sections of Pingaksh Creative Studio website. Find exactly what you&apos;'re looking for.
           </p>
         </div>
       </section>
@@ -139,7 +139,7 @@ export default function Sitemap() {
           <h2 className="text-4xl font-bold text-white mb-6">Need Help Navigating?</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-fuchsia-500 rounded-full mx-auto mb-8"></div>
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Can't find what you're looking for? Our team is here to help you navigate our services and find the perfect solution for your political campaign needs.
+            Can&apos;'t find what you&apos;'re looking for? Our team is here to help you navigate our services and find the perfect solution for your political campaign needs.
           </p>
           
           <div className="bg-gradient-to-br from-cyan-500/10 to-fuchsia-500/10 rounded-2xl border border-cyan-500/20 p-8">
